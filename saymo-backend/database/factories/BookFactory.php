@@ -16,11 +16,24 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
+        $genres = [
+            'Adventure',
+            'Biography',
+            'Classics',
+            'Fantasy',
+            'Horror',
+            'History',
+            'Mystery',
+            'Romance',
+            'Sci-Fi',
+            'Thriller',
+        ];
+
         return [
             'title' => $this->faker->sentence,
             'author' => $this->faker->name,
             'published_year' => $this->faker->year,
-            'genre' => $this->faker->word,
+            'genre' => $this->faker->randomElement($genres),
             'description' => $this->faker->paragraph,
         ];
     }

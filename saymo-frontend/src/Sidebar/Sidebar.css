@@ -1,0 +1,94 @@
+.sidebar {
+    height: 100vh; /* Full height */
+    width: 80px; /* Reduced width */
+    background-color: #F5F7FA; /* Background Color */
+    position: fixed; /* Fixed sidebar */
+    padding-top: 20px; /* Padding on top */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    transition: width 0.3s; /* Smooth transition for width */
+}
+
+.sidebar.expanded {
+    width: 200px; /* Expanded width */
+}
+
+.nav-toggle {
+    padding: 10px;
+    cursor: pointer;
+    color: #495057; /* Toggle icon color */
+    text-align: center;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: auto; /* Push settings to the bottom */
+}
+
+.nav-item {
+    padding: 10px; /* Tighter padding */
+    text-align: center; /* Center text when not expanded */
+    margin-bottom: 10px; /* Slight spacing between items */
+    color: #495057; /* Text Color (Dark Gray) */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+    border-radius: 12px; /* More rounded corners */
+    margin-left: 8px; /* Left margin to create space */
+    margin-right: 8px; /* Right margin to create space */
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background-color: #E2E6EA; /* Hover Background Color (Medium Gray) */
+}
+
+.nav-item.active {
+    color: #6C757D; /* Active Link Color (Dark Gray) */
+}
+
+.nav-item svg {
+    color: #495057; /* Default icon color */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition for color and size */
+    width: 20px; /* Adjusted width for icon size */
+    height: 20px; /* Adjusted height for icon size */
+}
+
+/* Change icon color on hover and active state */
+.nav-item:hover svg,
+.nav-item.active svg {
+    color: #6C757D; /* Change icon color for hover/active to Dark Gray */
+}
+
+/* Center icons when sidebar is collapsed */
+.sidebar:not(.expanded) .nav-item {
+    justify-content: center; /* Center icons and text */
+}
+
+/* Align icons to the left when sidebar is expanded */
+.sidebar.expanded .nav-item {
+    justify-content: flex-start; /* Align to the left */
+    text-align: left; /* Align text to the left */
+}
+
+.separator {
+    height: 1px; /* Height of the separator */
+    background-color: #CED4DA; /* Color of the separator (Light Gray) */
+    margin: 10px 0; /* Margin for spacing */
+}
+
+.nav-label {
+    display: none; /* Hide labels by default */
+    position: relative; /* Position relative to nav item */
+    color: #495057; /* Text color for labels */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.nav-item:hover .nav-label {
+    display: block; /* Show label on hover */
+}
+
+.sidebar.expanded .nav-label {
+    display: inline; /* Show labels when expanded */
+    margin-left: 10px; /* Space between icon and label */
+}

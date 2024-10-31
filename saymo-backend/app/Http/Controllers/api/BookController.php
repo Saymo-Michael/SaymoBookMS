@@ -44,7 +44,7 @@ class BookController extends Controller
             $request->validate([
                 'title' => 'required|string|max:255|unique:books,title',
                 'author' => 'required|string|max:255',
-                'published_year' => 'required|integer',
+                'published_year' => 'required|integer|min:1700|max:' . date('Y'),
                 'genre' => 'required|string|max:100',
                 'description' => 'required|string',
             ]);
@@ -53,8 +53,7 @@ class BookController extends Controller
             return response()->json($book, 201);
         } catch (ValidationException $e) {
             return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $e->validator->errors(),
+                'message' => $e->getMessage(),
             ], 422);
         } catch (Exception $e) {
             return response()->json([
@@ -101,14 +100,15 @@ class BookController extends Controller
             $book = Book::findOrFail($id);
 
             $request->validate([
-                'title' => 'sometimes|required|string|max:255|unique:books,title,' . $book->id,
-                'author' => 'sometimes|required|string|max:255',
-                'published_year' => 'sometimes|required|integer',
-                'genre' => 'sometimes|required|string|max:100',
-                'description' => 'sometimes|required|string',
+                'title' => 'required|string|max:255|unique:books,title,' . $book->id,
+                'author' => 'required|string|max:255',
+                'published_year' => 'required|integer|min:1700|max:' . date('Y'),
+                'genre' => 'required|string|max:100',
+                'description' => 'required|string',
             ]);
 
             $book->update($request->all());
+
             return response()->json($book, 200);
         } catch (ModelNotFoundException $e) {
             return response()->json([
@@ -116,8 +116,7 @@ class BookController extends Controller
             ], 404);
         } catch (ValidationException $e) {
             return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $e->validator->errors(),
+                'message' => $e->getMessage()
             ], 422);
         } catch (Exception $e) {
             return response()->json([
@@ -127,6 +126,7 @@ class BookController extends Controller
         }
     }
 
+
     /**
      * Remove the specified resource from storage.
      */
@@ -135,7 +135,7 @@ class BookController extends Controller
         try {
             $book = Book::findOrFail($id);
             $book->delete();
-            return response()->json(null, 204); // Return 204 No Content
+            return response()->json(null, 204);
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Book not found',

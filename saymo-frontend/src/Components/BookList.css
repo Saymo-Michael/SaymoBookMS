@@ -1,0 +1,100 @@
+body {
+  background-color: #F5F7FA; /* Match sidebar background color */
+  font-family: 'Arial', sans-serif;
+  color: #495057; /* Dark gray text to match sidebar */
+  margin: 0; /* Remove default margin */
+}
+
+.book-list {
+  padding: 20px;
+  max-width: calc(100% - 80px); /* Adjust for sidebar width */
+  margin: auto;
+  margin-left: 80px; /* Offset for the sidebar */
+}
+
+h1 {
+  font-family: 'Merriweather', serif; /* Bookish font */
+  text-align: center;
+  color: #003366; /* Deep navy blue for the header */
+  margin-bottom: 20px;
+}
+
+.book-list ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+}
+
+.book-card {
+  display: flex;
+  background-color: #FFFFFF; /* Soft white for cards */
+  border: 1px solid #CED4DA; /* Light gray border to match sidebar */
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.book-cover {
+  flex-shrink: 0; /* Prevent shrinking */
+  margin-right: 20px; /* Space between cover and details */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  font-family: 'Merriweather', serif; /* Use Merriweather for the titles */
+  color: #003366; /* Deep navy blue for titles */
+}
+
+.action-icons {
+  display: flex;
+  gap: 10px; /* Space between action icons */
+  margin-top: 10px;
+}
+
+.action-icons a,
+.action-icons button {
+  background-color: #E2E6EA; /* Light gray for buttons to match sidebar */
+  color: #495057; /* Dark gray text */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.action-icons a:hover,
+.action-icons button:hover {
+  background-color: #B0BEC5; /* Darker gray on hover */
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Specific styles for the delete button */
+.action-icons button.delete {
+  background-color: #C8102E; /* A vibrant, deep red */
+  color: white; /* White text for visibility */
+}
+
+.action-icons button.delete:hover {
+  background-color: #A5001D; /* Darker shade on hover */
+}
+
+/* Add a separator for better organization */
+.separator {
+  height: 1px;
+  background-color: #CED4DA; /* Light gray to match the sidebar */
+  margin: 10px 0; /* Spacing */
+}
+
+.error-message {
+  text-align: center; /* Center the text */
+  color: #495057; /* Dark gray for the text */
+  margin: 20px 0; /* Spacing around the message */
+}

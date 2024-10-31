@@ -1,0 +1,105 @@
+.book-form-container {
+  background-color: #ffffff; /* Soft white for the form background */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 30px;
+  max-width: 600px; /* Max width for better readability */
+  margin: auto; /* Centering the form */
+}
+
+.form-title {
+  text-align: center; /* Center title */
+  font-family: "Merriweather", serif; /* Bookish font */
+  color: #003366; /* Deep navy blue for the title */
+  margin-bottom: 20px; /* Space below title */
+}
+
+.form-layout {
+  display: flex;
+  flex-direction: column; /* Column layout */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between form fields */
+}
+
+label {
+  font-weight: bold; /* Bold labels */
+  color: #495057; /* Dark gray for labels */
+  display: flex; /* Flexbox for label and icon alignment */
+  align-items: center; /* Center items vertically */
+}
+
+label svg {
+  margin-right: 8px; /* Add space between icon and label text */
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%; /* Full width for inputs */
+  padding: 10px; /* Comfortable padding */
+  border: 1px solid #ced4da; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Larger font for readability */
+  transition: border-color 0.3s; /* Smooth transition for focus */
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: #003366; /* Deep navy border on focus */
+  outline: none; /* Remove default outline */
+}
+
+.button-container {
+  display: flex; /* Flexbox for button alignment */
+  justify-content: space-between; /* Space between buttons */
+  margin-top: 20px; /* Space above button container */
+}
+
+.submit-buttonForm {
+  background-color: #00796b; /* Teal color for submit button */
+  color: #ffffff; /* White text */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Match the padding of the back button */
+  width: auto; /* Auto width to fit content or set a specific width */
+  min-width: 150px; /* Set a minimum width for consistency */
+  cursor: pointer; /* Pointer on hover */
+  font-size: 16px; /* Standard font size */
+  font-weight: bold; /* Make the text bold to stand out */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.submit-buttonForm:hover {
+  background-color: #00574b; /* Darker shade of teal on hover */
+}
+
+.back-buttonForm {
+  background-color: #e0e0e0; /* Light gray for back button */
+  color: #495057; /* Dark gray text */
+  text-decoration: none; /* Remove underline */
+  padding: 10px 15px; /* Comfortable padding */
+  border: 1px solid #ced4da; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  display: flex; /* Flexbox for icon and text alignment */
+  align-items: center; /* Center items vertically */
+}
+
+.back-buttonForm:hover {
+  background-color: #d5d5d5; /* Slightly darker gray on hover */
+  color: #003366; /* Darker text on hover */
+}
+
+.back-buttonForm svg {
+  margin-right: 8px; /* Add space between icon and text */
+}
+
+/* Add a separator for better organization */
+.separator {
+  height: 1px;
+  background-color: #ced4da; /* Light gray to match the sidebar */
+  margin: 10px 0; /* Spacing */
+}
