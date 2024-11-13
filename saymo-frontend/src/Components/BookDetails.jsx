@@ -59,7 +59,7 @@ const BookDetails = () => {
             <p><strong>Author:</strong> {book.author}</p>
             <p><strong>Year:</strong> {book.published_year}</p>
             <p><strong>Genre:</strong> {book.genre}</p>
-            <p><strong>Description:</strong> {book.description}</p>
+            <p><strong>Description:</strong> {book.description ? book.description : 'No description available'}</p>
           </div>
           <Link to="/" className="back-button">
             <FaArrowLeft size={20} /> Back

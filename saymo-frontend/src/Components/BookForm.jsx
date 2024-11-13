@@ -17,13 +17,27 @@ const BookForm = ({ book = {}, onSubmit }) => {
     if (book.id) {
       setIsModalOpen(true);
     } else {
-      onSubmit({ title, author, published_year: year, genre, description });
+      const bookData = {
+        title,
+        author,
+        published_year: year,
+        genre,
+        description: description || null, 
+      };
+      onSubmit(bookData);
     }
   };
 
   const handleConfirm = () => {
-    onSubmit({ title, author, published_year: year, genre, description });
-    setIsModalOpen(false); 
+    const bookData = {
+      title,
+      author,
+      published_year: year,
+      genre,
+      description: description || null, 
+    };
+    onSubmit(bookData);
+    setIsModalOpen(false);
   };
 
   return (
@@ -104,7 +118,6 @@ const BookForm = ({ book = {}, onSubmit }) => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows="6"
-              required
               className="form-textarea"
               style={{ resize: 'none' }}
             />

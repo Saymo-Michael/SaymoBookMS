@@ -46,7 +46,7 @@ class BookController extends Controller
                 'author' => 'required|string|max:255',
                 'published_year' => 'required|integer|min:1700|max:' . date('Y'),
                 'genre' => 'required|string|max:100',
-                'description' => 'required|string',
+                'description' => 'nullable|string',
             ]);
 
             $book = Book::create($request->all());
@@ -104,7 +104,7 @@ class BookController extends Controller
                 'author' => 'required|string|max:255',
                 'published_year' => 'required|integer|min:1700|max:' . date('Y'),
                 'genre' => 'required|string|max:100',
-                'description' => 'required|string',
+                'description' => 'nullable|string',
             ]);
 
             $book->update($request->all());

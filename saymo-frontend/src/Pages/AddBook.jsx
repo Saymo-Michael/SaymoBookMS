@@ -20,20 +20,23 @@ const AddBook = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message);
+        throw new Error(errorData.message || 'An unexpected error occurred.');
       }
 
       setSuccessMessage('Book added successfully!');
-
       setTimeout(() => {
         setSuccessMessage(null);
         navigate('/');
-      }, 1000);
+      }, 2000);
     } catch (error) {
-      setErrorMessage(error.message || 'Oops! Something went wrong while creating the book.');
+      if (error.message === 'Failed to fetch') {
+        setErrorMessage('Failed to connect to the server. Please check your internet connection or try again later.');
+      } else {
+        setErrorMessage(error.message || 'Oops! Something went wrong while creating the book.');
+      }
       setTimeout(() => {
         setErrorMessage(null);
-      }, 2000);
+      }, 3000);  
     }
   };
 
@@ -51,7 +54,7 @@ const AddBook = () => {
       )}
       <BookForm onSubmit={handleAddBook} />
     </div>
-  );  
+  );
 };
 
 export default AddBook;
