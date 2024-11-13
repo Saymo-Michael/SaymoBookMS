@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Database\QueryException;
 use Exception;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -55,6 +56,11 @@ class BookController extends Controller
             return response()->json([
                 'message' => $e->getMessage(),
             ], 422);
+        } catch (QueryException $e) {
+            return response()->json([
+                'message' => 'Database error: The books table might be missing or not properly configured.',
+                'error' => $e->getMessage(),
+            ], 500);
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'An error occurred while creating the book. Please try again later.',
@@ -118,6 +124,11 @@ class BookController extends Controller
             return response()->json([
                 'message' => $e->getMessage()
             ], 422);
+        } catch (QueryException $e) {
+            return response()->json([
+                'message' => 'Database error: The books table might be missing or not properly configured.',
+                'error' => $e->getMessage(),
+            ], 500);
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'An error occurred while updating the book. Please try again later.',

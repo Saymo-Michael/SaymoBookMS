@@ -58,12 +58,12 @@ const EditBook = () => {
       setTimeout(() => {
         setSuccessMessage(null);
         navigate('/'); 
-      }, 1000);
+      }, 2000);
     } catch (error) {
       setErrorMessage(error.message || 'Oops! Something went wrong while updating the book.');
       setTimeout(() => {
         setErrorMessage(null);
-      }, 2000);
+      }, 3000);
     }
   };
 
