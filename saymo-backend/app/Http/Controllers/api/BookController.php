@@ -20,6 +20,11 @@ class BookController extends Controller
         try {
             $books = Book::all();
             return response()->json($books, 200);
+        } catch (QueryException $e) {
+            return response()->json([
+                'message' => 'Oops! We are unable to retrieve the book list at the moment. Please try again later.',
+                'error' => $e->getMessage(),
+            ], 500);
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'An error occurred while retrieving books. Please try again later.',
@@ -52,15 +57,15 @@ class BookController extends Controller
 
             $book = Book::create($request->all());
             return response()->json($book, 201);
+        } catch (QueryException $e) {
+            return response()->json([
+                'message' => 'Database error: Books table missing or misconfigured. Please try again later.',
+                'error' => $e->getMessage(),
+            ], 500);
         } catch (ValidationException $e) {
             return response()->json([
                 'message' => $e->getMessage(),
             ], 422);
-        } catch (QueryException $e) {
-            return response()->json([
-                'message' => 'Database error: The books table might be missing or not properly configured.',
-                'error' => $e->getMessage(),
-            ], 500);
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'An error occurred while creating the book. Please try again later.',
@@ -120,15 +125,15 @@ class BookController extends Controller
             return response()->json([
                 'message' => 'Book not found',
             ], 404);
+        } catch (QueryException $e) {
+            return response()->json([
+                'message' => 'Database error: Books table missing or misconfigured. Please try again later.',
+                'error' => $e->getMessage(),
+            ], 500);
         } catch (ValidationException $e) {
             return response()->json([
                 'message' => $e->getMessage()
             ], 422);
-        } catch (QueryException $e) {
-            return response()->json([
-                'message' => 'Database error: The books table might be missing or not properly configured.',
-                'error' => $e->getMessage(),
-            ], 500);
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'An error occurred while updating the book. Please try again later.',

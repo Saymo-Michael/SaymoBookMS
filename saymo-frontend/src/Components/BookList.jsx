@@ -29,7 +29,11 @@ const BookList = () => {
         const data = await response.json();
         setBooks(data);
       } catch (error) {
-        setError('Oops! Something went wrong.');
+        if (error.message === 'Failed to fetch') {
+          setError('Oops! Something went wrong.');
+        } else {
+          setError(error.message || 'Oops! Something went wrong while retrieving the books.');
+        }
       } finally {
         setLoading(false);
       }
