@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBook, FaUser, FaCalendarAlt, FaTags, FaInfoCircle, FaArrowLeft } from 'react-icons/fa'; 
+import { FaBook, FaUser, FaCalendarAlt, FaTags, FaInfoCircle, FaArrowLeft} from 'react-icons/fa'; 
 import ConfirmModal from './ConfirmModal'; 
 import './BookForm.css'; 
 
@@ -11,9 +11,11 @@ const BookForm = ({ book = {}, onSubmit }) => {
   const [genre, setGenre] = useState(book.genre || '');
   const [description, setDescription] = useState(book.description || '');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true); 
     if (book.id) {
       setIsModalOpen(true);
     } else {
@@ -24,7 +26,7 @@ const BookForm = ({ book = {}, onSubmit }) => {
         genre,
         description: description || null, 
       };
-      onSubmit(bookData);
+      onSubmit(bookData).finally(() => setLoading(false)); 
     }
   };
 
@@ -36,9 +38,17 @@ const BookForm = ({ book = {}, onSubmit }) => {
       genre,
       description: description || null, 
     };
-    onSubmit(bookData);
+    onSubmit(bookData).finally(() => setLoading(false)); 
     setIsModalOpen(false);
   };
+
+  const buttonText = loading
+    ? book.id 
+      ? 'Updating...' 
+      : 'Adding...' 
+    : book.id 
+      ? 'Update Book' 
+      : 'Add Book';
 
   return (
     <div className="book-form-container">
@@ -95,6 +105,7 @@ const BookForm = ({ book = {}, onSubmit }) => {
               value={genre}
               onChange={(e) => setGenre(e.target.value)}
               className="form-select"
+              required
             >
               <option value="">Select Genre</option>
               <option value="Adventure">Adventure</option>
@@ -124,8 +135,8 @@ const BookForm = ({ book = {}, onSubmit }) => {
           </div>
         </div>
         <div className="button-container">
-          <button type="submit" className="submit-buttonForm">
-            {book.id ? 'Update Book' : 'Add Book'}
+          <button type="submit" className="submit-buttonForm" disabled={loading}>
+            {buttonText}
           </button>
           <Link to="/" className="back-buttonForm">
             <FaArrowLeft /> Back
