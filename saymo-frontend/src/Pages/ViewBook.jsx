@@ -1,5 +1,5 @@
 import React from 'react';
-import BookDetails from '../BookDetails';
+import BookDetails from './Components/BookDetails';
 
 const ViewBook = () => {
   return (
