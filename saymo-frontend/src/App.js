@@ -4,10 +4,10 @@ import Sidebar from './Sidebar/Sidebar';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Home from './Components/Pages/Home'; 
-import AddBook from './Components/Pages/AddBook'; 
-import EditBook from './Components/Pages/EditBook';
-import ViewBook from './Components/Pages/ViewBook';
+import Home from './Pages/Home'; 
+import AddBook from './Pages/AddBook'; 
+import EditBook from './Pages/EditBook';
+import ViewBook from './Pages/ViewBook';
 
 function App() {
   return (
