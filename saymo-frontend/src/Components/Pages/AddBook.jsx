@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import BookForm from '../Components/BookForm';
+import BookForm from '../BookForm';
 import './Pages.css';
 
 const AddBook = () => {

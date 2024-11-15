@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link} from 'react-router-dom';
 import { FaArrowLeft} from 'react-icons/fa'; 
-import BookForm from '../Components/BookForm';
+import BookForm from '../BookForm';
 import BeatLoader from 'react-spinners/BeatLoader'; 
 import './Pages.css'; 
 
